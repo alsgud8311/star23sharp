@@ -3,8 +3,20 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        dotted: ["DungGeunMo", "sans-serif"],
+      },
       perspective: {
         800: "800px",
+      },
+      keyframes: {
+        "slide-up": {
+          "0%": { transform: "translateY(20px)", opacity: "0" },
+          "100%": { transform: "translateY(0px)", opacity: "1" },
+        },
+      },
+      animation: {
+        "slide-up": "slide-up 0.5s ease-out forwards",
       },
       rotate: {
         "x-0": "rotateX(0deg)",
