@@ -4,12 +4,16 @@
 @tailwind utilities;
 
 :root {
-  font-family: Pretendard, sans-serif;
+  font-family: DungGeunMo, sans-serif;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+@font-face {
+  font-family: "DungGeunMo";
+  src: url("./assets/DungGeunMo.woff") format("woff");
 }
 #root {
   width: 100%;
