@@ -15,12 +15,12 @@ function RouteComponent() {
       <img
         src={postbox}
         alt="별이삼샵"
-        className="transform translate-y-10 opacity-0 w-1/2 animate-slide-up"
+        className="w-1/2 translate-y-10 transform animate-slide-up opacity-0"
       />
       <p className="p-4 text-xl">별이삼샵</p>
       <Button
         onClick={() => {
-          navigate({ to: "/login" });
+          navigate({ to: "/create" });
         }}
       >
         시작하기
