@@ -12,8 +12,12 @@ function SignupComponent() {
       <p className="mb-11 text-2xl">새로운 문자 만들기</p>
       <div className="mb-11 flex flex-col gap-5">
         <div className="flex flex-col">
-          <p>나만의 번호</p>
-          <input type="number" className="border-b-2 border-black text-xl" />
+          <p>아이디</p>
+          <input type="text" className="border-b-2 border-black text-xl" />
+        </div>
+        <div className="flex flex-col">
+          <p>닉네임</p>
+          <input type="text" className="border-b-2 border-black text-xl" />
         </div>
         <div className="flex flex-col">
           <p>비밀번호</p>
