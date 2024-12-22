@@ -35,5 +35,15 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    ({ addUtilities }) => {
+      addUtilities({
+        ".slideUp": {
+          transform: "translateY(2.5rem)", // 올바른 구문: 문자열로 작성
+          animation: "slide-up 1s ease-in-out", // 올바른 구문: 문자열로 작성
+          opacity: "0",
+        },
+      });
+    },
+  ],
 };
