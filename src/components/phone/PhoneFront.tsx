@@ -7,15 +7,15 @@ export default function PhoneFront({
 }) {
   return (
     <div
-      className={` [backface-visibility:hidden] w-full h-full bg-white rounded-md border-2 ${open ? " [transform:rotateX(180deg)] [perspective(800px)] [transform-style: preserve-3d]" : "[transform:rotateX(0deg)] "} border-black flex flex-col transition-transform duration-1000 absolute z-10 origin-top`}
+      className={`h-full w-full rounded-md border-2 bg-white [backface-visibility:hidden] ${open ? "[perspective(800px)] [transform-style: preserve-3d] [transform:rotateX(180deg)]" : "[transform:rotateX(0deg)]"} absolute z-10 flex origin-top flex-col border-black transition-transform duration-1000`}
       onClick={switchOpen}
     >
-      <div className="w-full h-16 rounded-md flex justify-between ">
-        <div className="w-24 border-2 rounded-md border-black border-t-0 border-l-0"></div>
-        <div className="w-24 border-2 rounded-md border-black border-t-0 border-r-0"></div>
+      <div className="flex h-16 w-full justify-between rounded-md">
+        <div className="w-24 rounded-md border-2 border-l-0 border-t-0 border-black"></div>
+        <div className="w-24 rounded-md border-2 border-r-0 border-t-0 border-black"></div>
       </div>
-      <div className="flex-grow justify-center items-center flex flex-col">
-        <div className="w-64 h-64 rounded-full border-[10px] border-blue-300 flex justify-center items-center shadow-lg">
+      <div className="flex flex-grow flex-col items-center justify-center">
+        <div className="flex h-64 w-64 items-center justify-center rounded-full border-[10px] border-blue-300 shadow-lg">
           <p>핸드폰을 눌러 열어보세요</p>
         </div>
       </div>
