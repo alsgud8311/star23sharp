@@ -2,8 +2,8 @@ import { useState } from "react";
 
 export type ModalComponent = {
   modal: boolean;
-  openModal: () => void;
-  closeModal: () => void;
+  openModal?: () => void;
+  closeModal?: () => void;
 };
 
 export default function useModal() {
