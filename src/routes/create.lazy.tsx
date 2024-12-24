@@ -29,6 +29,7 @@ function CreateMessageRoomComponent() {
               type="text"
               value={title}
               onChange={updateTitle}
+              maxLength={20}
               className="w-full border-b-2 border-black text-lg"
               placeholder="친구들에게 보여져요"
             />
