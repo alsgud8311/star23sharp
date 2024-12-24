@@ -6,6 +6,7 @@ import { ErrorBoundary } from "react-error-boundary";
 import ErrorFallback from "@/components/common/errorFallback";
 import SuspenseFallback from "@/components/common/suspenseFallback";
 import PushError from "@/components/modals/pushError";
+import LoadingModal from "@/components/modals/loadingModal";
 
 export default function PhoneFrontScreen({
   open,
@@ -45,6 +46,7 @@ export default function PhoneFrontScreen({
                 <div className="relative flex h-full w-full flex-col items-center justify-center bg-white text-black">
                   {children}
                 </div>
+                <LoadingModal />
                 <PushError />
               </Suspense>
             </ErrorBoundary>
