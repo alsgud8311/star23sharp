@@ -1,5 +1,7 @@
 import { roomSignIn, RoomSignInRequest } from "@/api/auth.api";
 import useInput from "@/hooks/useInput";
+import { useErrorStore } from "@/store/useErrorStore";
+import { useLoadingStore } from "@/store/useLoadingStore";
 import { useRoomStore } from "@/store/useRoomStore";
 import { checkPasswordValidation } from "@/utils/validation";
 import { useMutation } from "@tanstack/react-query";
@@ -13,19 +15,25 @@ export default function useCheckMessageRoom(room_signature: string) {
     checkPasswordValidation,
   );
   const [validationErr, setValidationErr] = useState("");
-  const [errorMsg, setErrorMsg] = useState("");
   const saveToken = useRoomStore((state) => state.signIn);
   const navigate = useNavigate();
+  const pushError = useErrorStore((state) => state.pushError);
+  const changeLoadingState = useLoadingStore(
+    (state) => state.changeLoadingState,
+  );
 
-  const { mutate, isError, isPending } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: (req: RoomSignInRequest) => roomSignIn(req),
+    onMutate: () => changeLoadingState(true),
     onSuccess: (res) => {
+      changeLoadingState(false);
       saveToken(room_signature, res.access_token);
       navigate({ to: "/messages" });
     },
     onError: (error: AxiosError | Error) => {
+      changeLoadingState(false);
       if (isAxiosError(error) && error.status === 400)
-        setErrorMsg(error.message);
+        pushError(error.response?.data.message);
       else throw error;
     },
   });
@@ -50,10 +58,8 @@ export default function useCheckMessageRoom(room_signature: string) {
   return {
     signIn,
     validationErr,
-    errorMsg,
     updatePassword,
     password,
-    isError,
     isPending,
   };
 }
