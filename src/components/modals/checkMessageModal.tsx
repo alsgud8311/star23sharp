@@ -2,6 +2,8 @@ import Modal from "@/components/common/modal";
 import messageIcon from "@assets/message.png";
 import { ModalComponent } from "@/hooks/useModal";
 import Button from "@/components/common/button";
+import useCheckMessageRoom from "@/hooks/useCheckMessageRoom";
+import { useNavigate } from "@tanstack/react-router";
 
 export default function CheckMessageModal({
   modal,
@@ -9,6 +11,9 @@ export default function CheckMessageModal({
   closeModal,
   room_signature,
 }: { room_signature: string } & ModalComponent) {
+  const { isPending, password, signIn, updatePassword, validationErr } =
+    useCheckMessageRoom(room_signature);
+  const navigate = useNavigate();
   return (
     <Modal modal={modal} openModal={openModal} closeModal={closeModal}>
       <div className="flex w-full flex-col items-center justify-center">
@@ -23,14 +28,28 @@ export default function CheckMessageModal({
         </div>
         <div className="mb-5 flex w-full flex-col items-center justify-center">
           <p>비밀번호</p>
-          <input
-            type="password"
-            className="border-b border-black text-center outline-none"
-          />
+          <div className="flex w-full flex-col">
+            <input
+              type="password"
+              className="border-b border-black text-center outline-none"
+              value={password}
+              onChange={updatePassword}
+            />
+            <p className="text-sm text-red-500">{validationErr}</p>
+          </div>
         </div>
         <div className="flex flex-col gap-4">
-          <Button>확인</Button>
-          <Button>새로 만들기</Button>
+          <Button
+            onClick={() =>
+              signIn({ room_signature: room_signature, password: password })
+            }
+            disabled={isPending}
+          >
+            확인
+          </Button>
+          <Button onClick={() => navigate({ to: "/create" })}>
+            새로 만들기
+          </Button>
         </div>
       </div>
     </Modal>
