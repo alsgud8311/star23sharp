@@ -5,4 +5,13 @@ import tsconfigPaths from "vite-tsconfig-paths";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [TanStackRouterVite(), react(), tsconfigPaths()],
+  server: {
+    proxy: {
+      "/api": {
+        target: "https://3.38.8.19.nip.io/",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ""),
+      },
+    },
+  },
 });
