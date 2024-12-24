@@ -4,6 +4,8 @@ import { GiNetworkBars } from "react-icons/gi";
 import { TbBattery4 } from "react-icons/tb";
 import { ErrorBoundary } from "react-error-boundary";
 import ErrorFallback from "@/components/common/errorFallback";
+import SuspenseFallback from "@/components/common/suspenseFallback";
+import PushError from "@/components/modals/pushError";
 
 export default function PhoneFrontScreen({
   open,
@@ -39,10 +41,11 @@ export default function PhoneFrontScreen({
           </header>
           <div className="w-full flex-1">
             <ErrorBoundary fallback={<ErrorFallback />}>
-              <Suspense>
+              <Suspense fallback={<SuspenseFallback />}>
                 <div className="relative flex h-full w-full flex-col items-center justify-center bg-white text-black">
                   {children}
                 </div>
+                <PushError />
               </Suspense>
             </ErrorBoundary>
           </div>
