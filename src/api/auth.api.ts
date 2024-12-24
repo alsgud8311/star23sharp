@@ -44,6 +44,10 @@ type TokenRefreshResponse = {
 };
 
 export async function tokenRefresh(): Promise<TokenRefreshResponse> {
-  const { data } = await refreshInstance.get("/room/token/reissue");
+  const { data } = await refreshInstance.post("/room/token/reissue");
   return data;
+}
+
+export function roomSignOut() {
+  return refreshInstance.post("/room/signout");
 }

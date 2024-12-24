@@ -1,4 +1,4 @@
-import { tokenRefresh } from "@/api/auth.api";
+import { roomSignOut, tokenRefresh } from "@/api/auth.api";
 import logOnDev from "@/api/logging";
 import { useRoomStore } from "@/store/useRoomStore";
 import axios, {
@@ -64,7 +64,6 @@ instance.interceptors.response.use(
             logOnDev(`🚨 [API AUTHORIZATION RERTY] Token refresh...`);
             originalRequest._retry = true;
             const newAccessToken = await tokenRefresh();
-            console.log("????", newAccessToken);
             originalRequest.headers["Authorization"] =
               `Bearer ${newAccessToken.access_token}`;
             useRoomStore.getState().refresh(newAccessToken.access_token);
@@ -72,6 +71,7 @@ instance.interceptors.response.use(
           } catch (err) {
             logOnDev(`🚨 [API ERROR] Token refresh failed: ${err}`);
             useRoomStore.getState().signOut();
+            await roomSignOut();
             return Promise.reject(err);
           }
         }
