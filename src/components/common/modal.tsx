@@ -18,7 +18,7 @@ export default function Modal({
             onClick={closeModal}
           >
             <div
-              className="z-50 flex w-3/4 items-center justify-center rounded-md bg-white p-4"
+              className="z-50 flex w-3/4 translate-y-10 transform animate-slide-up items-center justify-center rounded-md bg-white p-4 opacity-0"
               onClick={(e) => e.stopPropagation()}
             >
               {children}
