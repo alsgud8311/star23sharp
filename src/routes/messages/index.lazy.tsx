@@ -5,6 +5,7 @@ import MessageList from "@/components/messages/messageList";
 import useModal from "@/hooks/useModal";
 import LinkModal from "@/components/modals/linkModal";
 import { useRoomStore } from "@/store/useRoomStore";
+import { roomSignOut } from "@/api/auth.api";
 
 export const Route = createLazyFileRoute("/messages/")({
   component: MessagesComponent,
@@ -16,7 +17,8 @@ function MessagesComponent() {
 
   const deleteToken = useRoomStore((state) => state.signOut);
 
-  function signOut() {
+  async function signOut() {
+    await roomSignOut();
     deleteToken();
     navigate({ to: "/" });
   }
