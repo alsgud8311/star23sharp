@@ -29,3 +29,11 @@ body {
   margin-right: auto;
   height: 100vh;
 }
+
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
