@@ -42,7 +42,7 @@ export default function PhoneFrontScreen({
               <Time />
             </span>
           </header>
-          <div className="pointer-events-auto w-full flex-1">
+          <div className="w-full flex-1 touch-auto">
             <ErrorBoundary fallback={<ErrorFallback />}>
               <Suspense fallback={<SuspenseFallback />}>
                 <div className="relative flex h-full w-full flex-col items-center justify-center bg-white text-black">
