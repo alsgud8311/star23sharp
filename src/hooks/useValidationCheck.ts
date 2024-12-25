@@ -9,6 +9,7 @@ export default function useValidationCheck(testFn: () => Validation) {
       setErrorMessage(testResult?.errorMsg);
       return false;
     }
+    setErrorMessage("");
     return true;
   }
   return { errorMessage, checkValidation };

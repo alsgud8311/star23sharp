@@ -28,3 +28,17 @@ export function titleSubmitValidation(title: string): Validation {
     errorMsg: "제목을 입력해주세요",
   };
 }
+
+export function checkpasswordConfirmValidation(
+  password: string,
+  confirm: string,
+): Validation {
+  if (password !== confirm)
+    return {
+      result: false,
+      errorMsg: "비밀번호가 일치하지 않아요",
+    };
+  return {
+    result: true,
+  };
+}
