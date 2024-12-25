@@ -8,6 +8,7 @@ export default function useMessageList() {
     queryFn: ({ pageParam = 0 }) => getMessageList(pageParam),
     initialPageParam: 0,
     getNextPageParam: (lastPage) => {
+      console.log(lastPage);
       return lastPage.page < lastPage.total_pages - 1
         ? lastPage.page + 1
         : undefined;

@@ -32,7 +32,7 @@ export default function MessageList() {
 
   return (
     <div className="relative h-full w-full overflow-hidden">
-      <div className="absolute inset-0 overflow-y-auto">
+      <div className="absolute inset-0 h-full overflow-y-auto">
         {messages.map((message: Message, index: number) => (
           <div
             key={index}
