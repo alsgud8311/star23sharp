@@ -9,7 +9,6 @@ export default function Phone() {
   return (
     <div
       className={`fixed h-[95%] w-[95%] min-w-[360px] max-w-[380px] transition-transform duration-1000 ${open ? "translate-y-full" : ""}`}
-      onTouchMove={(e) => e.stopPropagation()}
     >
       <PhoneFront open={open} switchOpen={switchOpen} />
       <PhoneFrontScreen open={open} switchOpen={switchOpen}>
