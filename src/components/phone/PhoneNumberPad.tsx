@@ -10,7 +10,7 @@ import {
 export default function PhoneNumberPad() {
   return (
     <div
-      className={`absolute -bottom-1/2 z-0 flex h-1/2 w-full flex-col rounded-md border-2 border-black bg-gray-100 shadow-md shadow-black duration-700`}
+      className={`absolute -bottom-full z-0 flex h-full w-full flex-col rounded-md border-2 border-black bg-gray-100 shadow-md shadow-black duration-700`}
     >
       <div className="flex h-16 w-full justify-between rounded-md bg-white">
         <div className="w-24 rounded-md border-2 border-l-0 border-t-0 border-black shadow-2xl"></div>
