@@ -43,7 +43,7 @@ export default function PhoneFrontScreen({
           <div className="w-full flex-1 touch-auto">
             <ErrorBoundary fallback={<ErrorFallback />}>
               <Suspense fallback={<SuspenseFallback />}>
-                <div className="relative flex h-full w-full flex-col items-center justify-center bg-white text-black">
+                <div className="relative inset-0 flex h-full w-full flex-col items-center justify-center overflow-auto bg-white text-black">
                   {children}
                 </div>
                 <LoadingModal />
