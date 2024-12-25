@@ -58,6 +58,8 @@ function MessageSendComponent() {
             className="absolute inset-0 h-full w-full touch-pan-y flex-col gap-2 overflow-y-scroll p-4"
             id="messageSend"
             style={{ WebkitOverflowScrolling: "touch" }}
+            onTouchStart={(e) => e.preventDefault()}
+            onTouchMove={(e) => e.stopPropagation()}
           >
             <div className="mb-4 flex items-center justify-center">
               <Button onClick={openCheckMessageModal}>
