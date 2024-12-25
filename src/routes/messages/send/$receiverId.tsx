@@ -55,7 +55,10 @@ function MessageSendComponent() {
         </header>
         <div className="flex flex-grow flex-col">
           <div className="relative h-full w-full">
-            <div className="absolute inset-0 w-full flex-col gap-2 overflow-y-auto p-4">
+            <div
+              className="absolute inset-0 w-full flex-col gap-2 overflow-y-scroll p-4"
+              id="messageSend"
+            >
               <div className="mb-4 flex items-center justify-center">
                 <Button onClick={openCheckMessageModal}>
                   <div className="flex w-full items-center justify-center gap-2">

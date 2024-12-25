@@ -21,6 +21,10 @@
   padding: 10px;
 }
 
+#messageSend {
+  -webkit-overflow-scrolling: touch;
+}
+
 body {
   max-width: 400px;
   margin-top: 0px;
@@ -28,7 +32,6 @@ body {
   margin-left: auto;
   margin-right: auto;
   height: calc(100 * var(--vh));
-  -webkit-overflow-scrolling: touch;
 }
 
 input::-webkit-inner-spin-button {
