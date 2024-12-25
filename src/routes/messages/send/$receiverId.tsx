@@ -53,7 +53,7 @@ function MessageSendComponent() {
         <header className="flex w-full items-center justify-center border-b-2 border-black p-3 text-xl">
           메시지
         </header>
-        <div className="flex flex-grow flex-col">
+        <div className="flex flex-1 flex-col overflow-hidden">
           <div className="relative h-full w-full">
             <div
               className="absolute inset-0 w-full touch-pan-y flex-col gap-2 overflow-y-auto p-4"
