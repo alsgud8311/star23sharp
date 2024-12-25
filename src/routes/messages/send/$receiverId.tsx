@@ -57,10 +57,6 @@ function MessageSendComponent() {
           <div
             className="absolute inset-0 h-full w-full"
             id="messageSend"
-            style={{
-              WebkitOverflowScrolling: "touch",
-              transform: "translate3d(0,0,0)",
-            }}
             onScroll={() => console.log("scroll")}
             onTouchMove={() => console.log("touchmove")}
           >
