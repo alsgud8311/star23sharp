@@ -69,14 +69,14 @@ function MessageSendComponent() {
                 maxLength={500}
                 value={body}
               />
-              <div className="text-lg">
+              <div className="flex flex-col text-lg">
                 <p>보내는사람</p>
                 <input
                   type="text"
                   value={sender}
                   maxLength={15}
                   onChange={updateSender}
-                  className="border-b border-black outline-none"
+                  className="w-3/4 border-b border-black outline-none"
                 />
               </div>
               <div className="text-lg">
