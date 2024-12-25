@@ -29,7 +29,11 @@ export default function PhoneFrontScreen({
       </div>
       <div className="flex h-full w-full flex-1 flex-col justify-center rounded-2xl bg-black p-4">
         <p className="text-md p-2 text-center text-slate-300">SHOW</p>
-        <div className="flex h-full w-full flex-1 flex-col bg-slate-700 font-dotted text-white">
+        <div
+          className="flex h-full w-full flex-1 flex-col bg-slate-700 font-dotted text-white"
+          onClick={(e) => e.stopPropagation()}
+          onTouchStart={(e) => e.preventDefault()}
+        >
           <header className="flex h-7 w-full items-center justify-between bg-white px-2">
             <GiNetworkBars color="black" />
             <span className="flex gap-2">
