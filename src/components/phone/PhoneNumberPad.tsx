@@ -10,7 +10,7 @@ import {
 export default function PhoneNumberPad() {
   return (
     <div
-      className={`absolute -bottom-full z-0 flex h-full w-full flex-col rounded-md border-2 border-black bg-gray-100 shadow-md shadow-black duration-700`}
+      className={`absolute -bottom-1/2 z-0 flex h-1/2 w-full flex-col rounded-md border-2 border-black bg-gray-100 shadow-md shadow-black duration-700`}
     >
       <div className="flex h-16 w-full justify-between rounded-md bg-white">
         <div className="w-24 rounded-md border-2 border-l-0 border-t-0 border-black shadow-2xl"></div>
@@ -31,7 +31,7 @@ export default function PhoneNumberPad() {
             <button className="flex h-12 items-center justify-center rounded-xl border-2 border-black bg-white text-2xl font-bold transition-colors duration-200 hover:bg-gray-100 active:bg-gray-200">
               <MdCallEnd color="green" size={30} />
             </button>
-            <button className="flex h-12 items-center justify-center rounded-xl border-2 border-black bg-white text-lg font-bold shadow-lg transition-colors duration-200 hover:bg-gray-100 active:bg-gray-200">
+            <button className="flex h-12 items-center justify-center rounded-xl border-2 border-black bg-white text-lg text-sm font-bold shadow-lg transition-colors duration-200 hover:bg-gray-100 active:bg-gray-200">
               지음/취소
             </button>
             <button className="flex h-12 items-center justify-center rounded-xl border-2 border-black bg-white text-2xl font-bold">

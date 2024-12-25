@@ -8,7 +8,7 @@ export default function Phone() {
   const { open, switchOpen } = usePhoneScreen();
   return (
     <div
-      className={`absolute h-[95%] w-[95%] min-w-[360px] max-w-[380px] -translate-y-full transition-transform duration-1000 ${open ? "translate-y-0" : ""}`}
+      className={`absolute h-[190%] w-[95%] min-w-[360px] max-w-[380px] -translate-y-full transition-transform duration-1000 ${open ? "-translate-y-1/2" : ""}`}
     >
       <PhoneFront open={open} switchOpen={switchOpen} />
       <PhoneFrontScreen open={open} switchOpen={switchOpen}>
