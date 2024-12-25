@@ -19,7 +19,7 @@ export default function PhoneFrontScreen({
 }) {
   return (
     <div
-      className={`absolute -top-full bottom-0 flex h-full w-full origin-bottom flex-col rounded-md border-2 border-black bg-slate-100 transition-transform duration-1000 ${
+      className={`absolute bottom-0 top-0 flex h-full w-full origin-bottom flex-col rounded-md border-2 border-black bg-slate-100 transition-transform duration-1000 ${
         open ? "[transform:rotateX(0deg)]" : "[transform:rotateX(180deg)]"
       } transform-style-preserve-3d backface-hidden flex flex-col items-center overflow-hidden p-2`}
       onClick={switchOpen}

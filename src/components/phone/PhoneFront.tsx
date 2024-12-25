@@ -7,7 +7,7 @@ export default function PhoneFront({
 }) {
   return (
     <div
-      className={`h-full w-full rounded-md border-2 bg-white [backface-visibility:hidden] ${open ? "[perspective(800px)] [transform-style: preserve-3d] [transform:rotateX(180deg)]" : "[transform:rotateX(0deg)]"} absolute z-10 flex origin-top flex-col border-black transition-transform duration-1000`}
+      className={`-bottom-full h-full w-full rounded-md border-2 bg-white [backface-visibility:hidden] ${open ? "[perspective(800px)] [transform-style: preserve-3d] [transform:rotateX(180deg)]" : "[transform:rotateX(0deg)]"} absolute z-10 flex origin-top flex-col border-black transition-transform duration-1000`}
       onClick={switchOpen}
     >
       <div className="flex h-16 w-full justify-between rounded-md">
