@@ -4,8 +4,8 @@ import { Message } from "@/types/message";
 type MessageList = {
   page: number;
   size: number;
-  totalPages: number;
-  totalItems: number;
+  total_pages: number;
+  total_messages: number;
   messages: Message[];
 };
 export async function getMessageList(page: number): Promise<MessageList> {
@@ -15,6 +15,15 @@ export async function getMessageList(page: number): Promise<MessageList> {
 
 export async function getMessageDetail(messageId: string): Promise<Message> {
   const { data } = await instance.get(`/message/get/received/${messageId}`);
+  return data;
+}
+export type MessageTitle = {
+  title: string;
+};
+export async function getMessageTitle(
+  room_signature: string,
+): Promise<MessageTitle> {
+  const { data } = await instance.get(`/room/get/title?room=${room_signature}`);
   return data;
 }
 
