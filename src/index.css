@@ -49,3 +49,8 @@ input::-webkit-outer-spin-button {
 ::-webkit-scrollbar-thumb {
   background: #a9a9a9;
 }
+
+textarea {
+  touch-action: manipulation; /* 터치 동작 허용 */
+  -webkit-overflow-scrolling: touch; /* iOS에서 부드러운 스크롤 */
+}
