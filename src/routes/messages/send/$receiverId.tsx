@@ -55,7 +55,7 @@ function MessageSendComponent() {
         </header>
         <div className="relative flex flex-1 flex-col">
           <div
-            className="absolute inset-0 h-full w-full"
+            className="absolute inset-0 h-full w-full overflow-hidden"
             id="messageSend"
             onScroll={() => console.log("scroll")}
             onTouchMove={() => console.log("touchmove")}
