@@ -58,6 +58,7 @@ function MessageSendComponent() {
             <div
               className="absolute inset-0 h-full w-full touch-pan-y flex-col gap-2 overflow-y-auto p-4"
               id="messageSend"
+              style={{ WebkitOverflowScrolling: "touch" }}
             >
               <div className="mb-4 flex items-center justify-center">
                 <Button onClick={openCheckMessageModal}>

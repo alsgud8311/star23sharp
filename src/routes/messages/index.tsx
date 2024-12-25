@@ -1,26 +1,26 @@
-import { createFileRoute, useNavigate } from '@tanstack/react-router'
-import { TbMailDown } from 'react-icons/tb'
-import linkIcon from '@assets/link.png'
-import MessageList from '@/components/messages/messageList'
-import useModal from '@/hooks/useModal'
-import LinkModal from '@/components/modals/linkModal'
-import { useRoomStore } from '@/store/useRoomStore'
-import { roomSignOut } from '@/api/auth.api'
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { TbMailDown } from "react-icons/tb";
+import linkIcon from "@assets/link.png";
+import MessageList from "@/components/messages/messageList";
+import useModal from "@/hooks/useModal";
+import LinkModal from "@/components/modals/linkModal";
+import { useRoomStore } from "@/store/useRoomStore";
+import { roomSignOut } from "@/api/auth.api";
 
-export const Route = createFileRoute('/messages/')({
+export const Route = createFileRoute("/messages/")({
   component: MessagesComponent,
-})
+});
 
 function MessagesComponent() {
-  const navigate = useNavigate()
-  const { modal, openModal, closeModal } = useModal()
+  const navigate = useNavigate();
+  const { modal, openModal, closeModal } = useModal();
 
-  const deleteToken = useRoomStore((state) => state.signOut)
+  const deleteToken = useRoomStore((state) => state.signOut);
 
   async function signOut() {
-    await roomSignOut()
-    deleteToken()
-    navigate({ to: '/' })
+    await roomSignOut();
+    deleteToken();
+    navigate({ to: "/" });
   }
 
   return (
@@ -39,7 +39,7 @@ function MessagesComponent() {
         </button>
         <MessageList />
         <footer className="flex h-10 w-full items-center justify-between border-y-2 border-black text-xl">
-          <button className="w-1/3" onClick={() => navigate({ to: '..' })}>
+          <button className="w-1/3" onClick={() => navigate({ to: ".." })}>
             홈
           </button>
           <button className="w-1/3">확인</button>
@@ -50,5 +50,5 @@ function MessagesComponent() {
       </div>
       <LinkModal openModal={openModal} closeModal={closeModal} modal={modal} />
     </>
-  )
+  );
 }
