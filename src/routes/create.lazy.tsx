@@ -1,15 +1,14 @@
 import Button from "@/components/common/button";
 import useCreateMessageRoom from "@/hooks/useCreateMessageRoom";
-import React, { useRef } from "react";
+import React from "react";
 import { createLazyFileRoute } from "@tanstack/react-router";
-import { PiEyesFill } from "react-icons/pi";
+import PasswordInput from "@/components/common/passwordInput";
 
 export const Route = createLazyFileRoute("/create")({
   component: CreateMessageRoomComponent,
 });
 
 function CreateMessageRoomComponent() {
-  const passwordRef = useRef<HTMLInputElement>(null);
   const {
     title,
     updateTitle,
@@ -18,14 +17,10 @@ function CreateMessageRoomComponent() {
     createRoom,
     titleErr,
     passwordErr,
+    passwordConfirm,
+    passwordConfirmErr,
+    updatePasswordConfirm,
   } = useCreateMessageRoom();
-  function togglePassword() {
-    if (passwordRef.current) {
-      if (passwordRef.current.type === "password")
-        passwordRef.current.type = "text";
-      else passwordRef.current.type = "password";
-    }
-  }
 
   return (
     <React.Fragment>
@@ -45,30 +40,17 @@ function CreateMessageRoomComponent() {
             <p className="text-sm text-red-500"> {titleErr}</p>
           </div>
         </div>
-        <div className="flex w-full flex-col">
-          <p>비밀번호</p>
-          <div className="w-full">
-            <div className="flex items-center border-b-2 border-black pr-2">
-              <input
-                ref={passwordRef}
-                type="password"
-                value={password}
-                onChange={updatePassword}
-                className={`w-full text-lg outline-none`}
-                placeholder="숫자 4자리만 가능해요"
-                maxLength={4}
-              />
-              <PiEyesFill
-                size={20}
-                onMouseDown={togglePassword}
-                onMouseUp={togglePassword}
-                onTouchStart={togglePassword}
-                onTouchEnd={togglePassword}
-              />
-            </div>
-            <p className="text-sm text-red-500">{passwordErr}</p>
-          </div>
-        </div>
+        <PasswordInput
+          password={password}
+          updatePassword={updatePassword}
+          errorMsg={passwordErr}
+        />
+        <PasswordInput
+          password={passwordConfirm}
+          updatePassword={updatePasswordConfirm}
+          errorMsg={passwordConfirmErr}
+          informText="비밀번호 확인"
+        />
       </div>
       <div className="flex flex-col gap-4">
         <Button onClick={createRoom}>만들기</Button>
