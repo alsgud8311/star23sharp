@@ -2,6 +2,7 @@ import NoMessage from "@/components/messages/noMessage";
 import useMessageList from "@/hooks/useMessageList";
 import useModal from "@/hooks/useModal";
 import useObserver from "@/hooks/useObserver";
+import useTouchScroll from "@/hooks/useTouchScroll";
 import { Message } from "@/types/message";
 import { useNavigate } from "@tanstack/react-router";
 import { useRef } from "react";
@@ -10,6 +11,7 @@ export default function MessageList() {
   const { modal: linkmodal, openModal, closeModal } = useModal();
   const { data: messages, fetchNextPage, hasNextPage } = useMessageList();
   const bottomRef = useRef(null);
+  const scrollRef = useTouchScroll();
 
   const onIntersect = ([entry]: IntersectionObserverEntry[]) =>
     entry.isIntersecting && hasNextPage && fetchNextPage();
@@ -32,7 +34,7 @@ export default function MessageList() {
 
   return (
     <div className="relative h-full w-full overflow-hidden">
-      <div className="absolute inset-0 h-full overflow-y-auto">
+      <div className="absolute inset-0 h-full overflow-y-auto" ref={scrollRef}>
         {messages.map((message: Message, index: number) => (
           <div
             key={index}
