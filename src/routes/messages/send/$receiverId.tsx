@@ -55,40 +55,40 @@ function MessageSendComponent() {
         </header>
         <div className="relative flex flex-1 flex-col overflow-hidden">
           <div
-            className="absolute inset-0 h-full w-full touch-pan-y flex-col gap-2 overflow-y-scroll p-4"
+            className="absolute inset-0 h-full w-full"
             id="messageSend"
             style={{ WebkitOverflowScrolling: "touch" }}
-            onTouchStart={(e) => e.preventDefault()}
-            onTouchMove={(e) => e.stopPropagation()}
           >
-            <div className="mb-4 flex items-center justify-center">
-              <Button onClick={openCheckMessageModal}>
-                <div className="flex w-full items-center justify-center gap-2">
-                  <img src={messageIcon} alt="message" className="w-5" />내
-                  메시지 확인하기
-                </div>
-              </Button>
-            </div>
-            <textarea
-              className="h-72 w-full break-all border-2 border-black p-2 text-lg outline-none"
-              placeholder="친구에게 하고 싶었지만 제대로 하지 못했던 말을 적어보세요"
-              onChange={updateBody}
-              maxLength={500}
-              value={body}
-            />
-            <div className="flex flex-col text-lg">
-              <p>보내는사람</p>
-              <input
-                type="text"
-                value={sender}
-                maxLength={15}
-                onChange={updateSender}
-                className="w-3/4 border-b border-black outline-none"
+            <div className="h-full w-full touch-pan-y flex-col gap-2 overflow-y-scroll p-4">
+              <div className="mb-4 flex items-center justify-center">
+                <Button onClick={openCheckMessageModal}>
+                  <div className="flex w-full items-center justify-center gap-2">
+                    <img src={messageIcon} alt="message" className="w-5" />내
+                    메시지 확인하기
+                  </div>
+                </Button>
+              </div>
+              <textarea
+                className="h-72 w-full break-all border-2 border-black p-2 text-lg outline-none"
+                placeholder="친구에게 하고 싶었지만 제대로 하지 못했던 말을 적어보세요"
+                onChange={updateBody}
+                maxLength={500}
+                value={body}
               />
-            </div>
-            <div className="text-lg">
-              <p>받는사람</p>
-              <p className="text-sm">{room.title}</p>
+              <div className="flex flex-col text-lg">
+                <p>보내는사람</p>
+                <input
+                  type="text"
+                  value={sender}
+                  maxLength={15}
+                  onChange={updateSender}
+                  className="w-3/4 border-b border-black outline-none"
+                />
+              </div>
+              <div className="text-lg">
+                <p>받는사람</p>
+                <p className="text-sm">{room.title}</p>
+              </div>
             </div>
           </div>
         </div>
