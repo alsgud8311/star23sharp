@@ -53,9 +53,9 @@ function MessageSendComponent() {
         <header className="flex w-full items-center justify-center border-b-2 border-black p-3 text-xl">
           메시지
         </header>
-        <div className="relative flex flex-1 flex-col overflow-hidden">
+        <div className="relative flex flex-1 flex-col">
           <div
-            className="absolute inset-0 h-full w-full"
+            className="absolute inset-0 z-10 h-full w-full"
             id="messageSend"
             style={{ WebkitOverflowScrolling: "touch" }}
           >
