@@ -49,7 +49,7 @@ function MessageSendComponent() {
   if (isSuccess) return <SendSuccess />;
   return (
     <>
-      <div className="flex h-full w-full flex-col">
+      <div className="flex h-full w-full flex-col overflow-y-auto">
         <header className="flex w-full items-center justify-center border-b-2 border-black p-3 text-xl">
           메시지
         </header>
