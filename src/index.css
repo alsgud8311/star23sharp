@@ -28,6 +28,8 @@ body {
   margin-left: auto;
   margin-right: auto;
   height: calc(100 * var(--vh));
+}
+html {
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: none;
 }
