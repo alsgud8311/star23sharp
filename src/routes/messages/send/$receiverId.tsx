@@ -56,7 +56,10 @@ function MessageSendComponent() {
         <div className="flex flex-1 flex-col overflow-hidden">
           <div className="relative h-full w-full">
             <div
-              className="absolute inset-0 h-full w-full touch-pan-y flex-col gap-2 overflow-y-auto p-4"
+              style={{
+                WebkitOverflowScrolling: "touch",
+              }}
+              className="absolute inset-0 h-1/2 w-full touch-pan-y flex-col gap-2 overflow-y-auto p-4"
               id="messageSend"
             >
               <div className="mb-4 flex items-center justify-center">
