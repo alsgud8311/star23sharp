@@ -27,7 +27,7 @@ body {
   margin-bottom: 0px;
   margin-left: auto;
   margin-right: auto;
-  height: 100vh;
+  height: calc(100 * var(--vh));
 }
 
 input::-webkit-inner-spin-button {
