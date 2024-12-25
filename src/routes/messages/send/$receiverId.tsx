@@ -54,16 +54,18 @@ function MessageSendComponent() {
           메시지
         </header>
         <div className="flex flex-grow flex-col">
-          <div className="relative h-full w-full overflow-hidden">
-            <div className="absolute inset-0 flex flex-col gap-2 overflow-y-auto p-4">
-              <Button onClick={openCheckMessageModal}>
-                <div className="flex w-full items-center justify-center gap-2">
-                  <img src={messageIcon} alt="message" className="w-5" />내
-                  메시지 확인하기
-                </div>
-              </Button>
+          <div className="relative h-full w-full">
+            <div className="absolute inset-0 w-full flex-col gap-2 overflow-y-auto p-4">
+              <div className="mb-4 flex items-center justify-center">
+                <Button onClick={openCheckMessageModal}>
+                  <div className="flex w-full items-center justify-center gap-2">
+                    <img src={messageIcon} alt="message" className="w-5" />내
+                    메시지 확인하기
+                  </div>
+                </Button>
+              </div>
               <textarea
-                className="h-72 w-full overflow-y-scroll break-all border-2 border-black p-2 text-lg outline-none"
+                className="h-72 w-full break-all border-2 border-black p-2 text-lg outline-none"
                 placeholder="친구에게 하고 싶었지만 제대로 하지 못했던 말을 적어보세요"
                 onChange={updateBody}
                 maxLength={500}
