@@ -10,8 +10,10 @@ export default function MessageList() {
   const { modal: linkmodal, openModal, closeModal } = useModal();
   const { data: messages, fetchNextPage, hasNextPage } = useMessageList();
   const bottomRef = useRef(null);
+
   const onIntersect = ([entry]: IntersectionObserverEntry[]) =>
     entry.isIntersecting && hasNextPage && fetchNextPage();
+
   const navigate = useNavigate();
 
   useObserver<Message[]>({
@@ -48,7 +50,7 @@ export default function MessageList() {
             </span>
           </div>
         ))}
-        <div ref={bottomRef}></div>
+        <div className="h-10" ref={bottomRef}></div>
       </div>
     </div>
   );
