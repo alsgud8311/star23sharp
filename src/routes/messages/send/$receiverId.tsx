@@ -56,7 +56,7 @@ function MessageSendComponent() {
         <div className="flex flex-grow flex-col">
           <div className="relative h-full w-full">
             <div
-              className="absolute inset-0 w-full flex-col gap-2 overflow-y-scroll p-4"
+              className="absolute inset-0 w-full touch-pan-y flex-col gap-2 overflow-y-auto p-4"
               id="messageSend"
             >
               <div className="mb-4 flex items-center justify-center">
