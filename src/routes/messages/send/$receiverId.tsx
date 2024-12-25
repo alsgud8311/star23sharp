@@ -61,7 +61,7 @@ function MessageSendComponent() {
             </div>
           </Button>
           <textarea
-            className="h-40 w-full overflow-y-scroll break-all border-2 border-black p-2 text-lg outline-none min-[380px]:h-72"
+            className="h-32 w-full overflow-y-scroll break-all border-2 border-black p-2 text-lg outline-none min-[380px]:h-64"
             placeholder="친구에게 하고 싶었지만 제대로 하지 못했던 말을 적어보세요"
             onChange={updateBody}
             maxLength={500}
