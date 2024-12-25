@@ -7,6 +7,7 @@ import CheckMessageModal from "@/components/modals/checkMessageModal";
 import useInput from "@/hooks/useInput";
 import useModal from "@/hooks/useModal";
 import useSendMessage from "@/hooks/useSendMessage";
+import useTouchScroll from "@/hooks/useTouchScroll";
 import { useRoomStore } from "@/store/useRoomStore";
 import messageIcon from "@assets/message.png";
 import {
@@ -39,6 +40,7 @@ function MessageSendComponent() {
   const { isError, isPending, isSuccess, send } = useSendMessage();
   const currentCheckedRoom = useRoomStore((state) => state.messageRoom);
   const room = useLoaderData({ from: "/messages/send/$receiverId" });
+  const scrollRef = useTouchScroll();
 
   function openCheckMessageModal() {
     if (room_signature === currentCheckedRoom) navigate({ to: "/messages" });
@@ -60,7 +62,10 @@ function MessageSendComponent() {
             onScroll={() => console.log("scroll")}
             onTouchMove={() => console.log("touchmove")}
           >
-            <div className="h-full w-full touch-pan-y flex-col gap-2 overflow-scroll p-4">
+            <div
+              className="h-full w-full touch-pan-y flex-col gap-2 overflow-scroll p-4"
+              ref={scrollRef}
+            >
               <div className="mb-4 flex items-center justify-center">
                 <Button onClick={openCheckMessageModal}>
                   <div className="flex w-full items-center justify-center gap-2">
