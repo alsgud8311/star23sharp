@@ -37,7 +37,7 @@ function MessageSendComponent() {
   const { text: body, updateText: updateBody } = useInput();
   const { text: sender, updateText: updateSender } = useInput("*23#");
   const { modal, openModal, closeModal } = useModal();
-  const { isError, isPending, isSuccess, send } = useSendMessage();
+  const { isError, isSuccess, send } = useSendMessage();
   const currentCheckedRoom = useRoomStore((state) => state.messageRoom);
   const room = useLoaderData({ from: "/messages/send/$receiverId" });
   const scrollRef = useTouchScroll();
@@ -106,7 +106,6 @@ function MessageSendComponent() {
         <button
           className="w-1/3"
           onClick={() => send({ room_signature, sender, body })}
-          disabled={isPending}
         >
           보내기
         </button>
