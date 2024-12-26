@@ -6,6 +6,8 @@ import useModal from "@/hooks/useModal";
 import LinkModal from "@/components/modals/linkModal";
 import { useRoomStore } from "@/store/useRoomStore";
 import { roomSignOut } from "@/api/auth.api";
+import { Suspense } from "react";
+import SuspenseFallback from "@/components/common/suspenseFallback";
 
 export const Route = createFileRoute("/messages/")({
   component: MessagesComponent,
@@ -18,9 +20,14 @@ function MessagesComponent() {
   const deleteToken = useRoomStore((state) => state.signOut);
 
   async function signOut() {
-    await roomSignOut();
-    deleteToken();
-    navigate({ to: "/" });
+    try {
+      await roomSignOut();
+    } catch (error) {
+      console.error(error);
+    } finally {
+      deleteToken();
+      navigate({ to: "/" });
+    }
   }
 
   return (
@@ -37,14 +44,16 @@ function MessagesComponent() {
           <img src={linkIcon} alt="link" className="w-5" />
           링크 공유하기
         </button>
-        <MessageList />
+        <Suspense fallback={<SuspenseFallback />}>
+          <MessageList />
+        </Suspense>
         <footer className="flex h-10 w-full items-center justify-between border-y-2 border-black text-xl">
           <button className="w-1/3" onClick={() => navigate({ to: ".." })}>
             홈
           </button>
           <button className="w-1/3">확인</button>
           <button className="w-1/3" onClick={signOut}>
-            나가기
+            로그아웃
           </button>
         </footer>
       </div>
