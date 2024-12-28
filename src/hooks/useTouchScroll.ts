@@ -7,6 +7,7 @@ function useTouchScroll() {
 
   useEffect(() => {
     const handleTouchStart = (e: TouchEvent) => {
+      e.stopPropagation();
       if (containerRef.current) {
         setIsTouching(true);
         startTouchY.current = e.touches[0].clientY;
@@ -15,6 +16,7 @@ function useTouchScroll() {
 
     const handleTouchMove = (e: TouchEvent) => {
       if (isTouching && containerRef.current) {
+        e.stopPropagation();
         const deltaY = e.touches[0].clientY - startTouchY.current;
         containerRef.current.scrollTop -= deltaY;
         startTouchY.current = e.touches[0].clientY;

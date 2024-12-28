@@ -31,6 +31,7 @@ function DeatilMessageComponent() {
   const { modal, openModal, closeModal, deleteInform, messageDelete } =
     useDeleteMessage(detailData.id.toString());
   const scrollRef = useTouchScroll();
+  const MessageDeatilScrollRef = useTouchScroll();
   return (
     <>
       <div className="flex h-full w-full flex-col">
@@ -48,7 +49,10 @@ function DeatilMessageComponent() {
               className="h-full w-full touch-pan-y flex-col gap-2 overflow-scroll p-4"
               ref={scrollRef}
             >
-              <div className="h-60 w-full overflow-y-scroll break-all border-2 border-black p-2 text-xl min-[380px]:h-80">
+              <div
+                className="h-60 w-full overflow-y-scroll break-all border-2 border-black p-2 text-xl min-[380px]:h-60"
+                ref={MessageDeatilScrollRef}
+              >
                 {detailData.body}
               </div>
               <div>
