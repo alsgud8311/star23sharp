@@ -17,6 +17,7 @@ declare module "@tanstack/react-router" {
     router: typeof router;
   }
 }
+
 const queryClient = new QueryClient();
 // Render the app
 const rootElement = document.getElementById("root")!;

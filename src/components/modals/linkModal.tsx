@@ -4,6 +4,10 @@ import { ModalComponent } from "@/hooks/useModal";
 import { IoMdCheckmark, IoMdClipboard } from "react-icons/io";
 import { useRoomStore } from "@/store/useRoomStore";
 import { useState } from "react";
+import Button from "@/components/common/button";
+import shareMessageSend from "@/utils/shareMessageSend";
+import { useErrorStore } from "@/store/useErrorStore";
+import { getMessageTitle } from "@/api/message.api";
 
 export default function LinkModal({
   modal,
@@ -13,11 +17,24 @@ export default function LinkModal({
   const receiverId = useRoomStore((state) => state.messageRoom);
   const link = `${location.origin}/messages/send/${receiverId}`;
   const [copied, setCopied] = useState(false);
+  const pushError = useErrorStore((state) => state.pushError);
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(link).then(() => {
       setCopied(true);
     });
+  };
+
+  const share = async () => {
+    try {
+      const { title: receiverName } = await getMessageTitle(receiverId);
+      shareMessageSend({ receiverId, receiverName });
+    } catch (error) {
+      console.error(error);
+      pushError(
+        "예상치 못한 에러가 발생했어요. \n 잠시 후 다시 시도해 주세요.",
+      );
+    }
   };
 
   return (
@@ -28,7 +45,7 @@ export default function LinkModal({
           <p className="text-md">링크를 공유하고</p>
           <p className="text-md">메세지를 받아보세요</p>
         </div>
-        <div className="flex w-full items-center justify-between border px-2 py-1">
+        <div className="mb-3 flex w-full items-center justify-between border px-2 py-1">
           <input
             type="text"
             value={link}
@@ -41,6 +58,9 @@ export default function LinkModal({
             <IoMdClipboard color="gray" onClick={copyToClipboard} />
           )}
         </div>
+        <Button onClick={share}>
+          <p className="text-sm">카카오톡 공유하기</p>
+        </Button>
       </div>
     </Modal>
   );
