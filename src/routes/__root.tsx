@@ -7,6 +7,9 @@ export const Route = createRootRoute({
 });
 
 function RootComponent() {
+  if (!window.Kakao.isInitialized()) {
+    window.Kakao.init(import.meta.env.VITE_APP_KAKOTALK_API_KEY);
+  }
   resize();
   return <Phone></Phone>;
 }
