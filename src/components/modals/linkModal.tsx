@@ -5,9 +5,9 @@ import { IoMdCheckmark, IoMdClipboard } from "react-icons/io";
 import { useRoomStore } from "@/store/useRoomStore";
 import { useState } from "react";
 import Button from "@/components/common/button";
-import shareMessageSend from "@/utils/shareMessageSend";
 import { useErrorStore } from "@/store/useErrorStore";
 import { getMessageTitle } from "@/api/message.api";
+import { kakaoShareCustom } from "@/utils/shareMessageSend";
 
 export default function LinkModal({
   modal,
@@ -28,7 +28,10 @@ export default function LinkModal({
   const share = async () => {
     try {
       const { title: receiverName } = await getMessageTitle(receiverId);
-      shareMessageSend({ receiverId, receiverName });
+      kakaoShareCustom("MESSAGESEND", {
+        RECEIVER_ID: receiverId,
+        RECEIVER_NAME: receiverName,
+      });
     } catch (error) {
       console.error(error);
       pushError(

@@ -1,16 +1,22 @@
-type ShareMessageSendProps = {
-  receiverId: string;
-  receiverName: string;
+export type ShareMessageSendLink = {
+  RECEIVER_NAME: string;
+  RECEIVER_ID: string;
 };
-export default function shareMessageSend({
-  receiverName,
-  receiverId,
-}: ShareMessageSendProps) {
+
+export enum CustomShare {
+  MESSAGESEND = +import.meta.env.VITE_APP_KAKOTALK_MESSAGESEND_TEMPLATE_ID,
+}
+
+export type CustomArgs = Record<keyof typeof CustomShare, any> & {
+  MESSAGESEND: ShareMessageSendLink;
+};
+
+export function kakaoShareCustom<K extends keyof typeof CustomShare>(
+  templateId: K,
+  templateArgs: CustomArgs[K],
+) {
   window.Kakao.Share.sendCustom({
-    templateId: +import.meta.env.VITE_APP_KAKOTALK_MESSAGESEND_TEMPLATE_ID,
-    templateArgs: {
-      RECEIVER_NAME: receiverName,
-      RECEIVER_ID: receiverId,
-    },
+    templateId: CustomShare[templateId],
+    templateArgs,
   });
 }
